@@ -11,7 +11,7 @@ const Allplayers = ({ handleIsActive, isActive, handleSelectedPlayer, selectedPl
 
 
     useEffect(() => {
-        fetch('../../../public/players.json')
+        fetch('players.json')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, []);

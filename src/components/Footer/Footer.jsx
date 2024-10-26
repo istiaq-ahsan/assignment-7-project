@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <div className='bg-gray-950 -mt-36 pt-40'>
             <div className='flex justify-center items-center'>
-                <img src="../../../image/logo-footer.png" alt="" />
+                <img src="image/logo-footer.png" alt="" />
             </div>
             <footer className="footer grid grid-cols-1 lg:grid-cols-3
             justify-center  text-gray-400 p-10">

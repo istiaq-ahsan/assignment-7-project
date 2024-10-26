@@ -1,6 +1,6 @@
 .front-box {
     background-color: wheat;
-    background-image: url(../../../image/bg-shadow.png);
+    background-image: url(/public/image/bg-shadow.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
