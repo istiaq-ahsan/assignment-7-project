@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Players = ({ product, handleSelectedPlayer }) => {
+const Players = ({ product, handleSelectedPlayer, handleDeletePrice }) => {
 
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Selected = ({ selectedPlayer, handleDelete }) => {
+const Selected = ({ selectedPlayer, handleDelete, handleIsActive }) => {
     console.log(handleDelete);
     return (
         <div className='my-16'>
@@ -20,12 +20,15 @@ const Selected = ({ selectedPlayer, handleDelete }) => {
                                 </div>
                             </div>
                             <div>
-                                <button onClick={() => handleDelete(player.playerId)}><i className="fa-regular fa-trash-can text-xl"></i></button>
+                                <button onClick={() => handleDelete(player.playerId, player.biddingPrice)}><i className="fa-regular fa-trash-can text-xl"></i></button>
                             </div>
                         </div>
                     </div>
                 ))
             }
+            <div className='border border-black p-2 w-fit rounded-xl'>
+                <button onClick={() => handleIsActive("cart")} className='btn btn-actions bg-yellow-300'>Add More Player</button>
+            </div>
         </div>
     );
 };

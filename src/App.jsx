@@ -6,6 +6,8 @@ import Banner from "./components/Banner/Banner";
 import Allplayers from "./components/Allplayers/Allplayers";
 import Footer from "./components/Footer/Footer";
 import Subscribe from "./components/Subscribe/Subscribe";
+import { toast } from 'react-toastify';
+
 
 
 function App() {
@@ -16,20 +18,48 @@ function App() {
 
   const [selectedPlayer, setSelectedPlayer] = useState([]);
 
-  const handleDelete = (id) => {
+  const [price, setPrice] = useState(0);
+
+  const handleIncreasePrice = (money) => {
+    setPrice(price + money)
+  }
+
+  const deleteIncrease = (biddingPrice) => {
+    setPrice(price + biddingPrice)
+  }
+
+  const handleDeletePrice = (id, biddingPrice) => {
+    setPrice(price - biddingPrice)
+  }
+
+  const handleDelete = (id, biddingPrice) => {
+    deleteIncrease(biddingPrice);
     const remainingPlayer = selectedPlayer.filter((p) => p.playerId !== id);
     setSelectedPlayer(remainingPlayer);
   }
 
   const handleSelectedPlayer = (player) => {
 
+    if (selectedPlayer.length >= 6) {
+      toast.error("You already added Six players");
+      return;
+    }
+
+    if (price === 0) {
+      toast.error("Insufficient Credit");
+      return;
+    }
+
     const isExist = selectedPlayer.find((p) => p.playerId == player.playerId);
     if (isExist) {
-      alert("Player Already Selected");
+      toast.error("Player Already Selected");
     }
     else {
+      toast(`Congrates!! ${player.name} is now in your squad`);
       const newPlayers = [...selectedPlayer, player];
       setSelectedPlayer(newPlayers);
+      handleDeletePrice(player.playerId, player.biddingPrice);
+
     }
   }
   console.log(selectedPlayer);
@@ -55,8 +85,8 @@ function App() {
 
   return (
     <>
-      <Header></Header>
-      <Banner></Banner>
+      <Header price={price}></Header>
+      <Banner handleIncreasePrice={handleIncreasePrice}></Banner>
       <Allplayers
         selectedPlayer={selectedPlayer}
         handleSelectedPlayer={handleSelectedPlayer}

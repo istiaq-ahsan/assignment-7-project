@@ -1,6 +1,6 @@
 
 
-const Header = () => {
+const Header = ({ price }) => {
     return (
         <div className='container mx-auto my-5 flex justify-between items-center'>
             <div>
@@ -14,7 +14,7 @@ const Header = () => {
                     <li><a href="#">Schedules</a></li>
                 </ul>
                 <ul>
-                    <li className='font-bold flex gap-2'><span>0</span>  Coin <img className='w-5 h-5' src="https://img.icons8.com/?size=100&id=sPBQkuep9vDA&format=png&color=000000" alt="" /></li>
+                    <li className='font-bold flex gap-2'><span>{price}</span>  Coin <img className='w-5 h-5' src="https://img.icons8.com/?size=100&id=sPBQkuep9vDA&format=png&color=000000" alt="" /></li>
                 </ul>
             </div>
         </div>
