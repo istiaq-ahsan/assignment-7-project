@@ -3,12 +3,12 @@ import React from 'react';
 const Footer = () => {
     return (
         <div className='bg-gray-950 -mt-36 pt-40'>
-            <footer className="footer grid grid-cols-1 grid-cols-3
-            justify-center  text-gray-400 p-10">
+            <footer className="footer grid grid-cols-1 lg:grid-cols-3
+            justify-between  text-gray-400 p-10">
 
                 <div>
                     <h6 className="text-xl text-white font-semibold">About Us</h6>
-                    <p className='w-72'>We are passionate team dedicated to
+                    <p className='w-72 md:w-60'>We are passionate team dedicated to
                         providing the best services to our customer</p>
                 </div>
                 <div>
@@ -28,7 +28,7 @@ const Footer = () => {
                         <label className="label my-3">
                             <span className="">Subscribe to our newsletter for the latest updates</span>
                         </label>
-                        <div className="join">
+                        <div className="join flex">
                             <input
                                 type="text"
                                 placeholder="Enter Your Email"

@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Players = (product) => {
+const Players = ({ product, handleSelectedPlayer }) => {
 
 
-    const { playerId, name, country, image, role, battingType, bowlingType, biddingPrice } = product.product
+
+    const { playerId, name, country, image, role, battingType, bowlingType, biddingPrice } = product
 
     return (
         <div className=''>
@@ -15,13 +16,13 @@ const Players = (product) => {
                 </figure>
                 <div className="card-body">
                     <div className='flex items-center gap-3'>
-                        <i class="fa-solid fa-user text-2xl rounded-full"></i>
+                        <i className="fa-solid fa-user text-2xl rounded-full"></i>
                         <h2 className="card-title">{name}</h2>
                     </div>
 
                     <div className='flex justify-between mb-2'>
                         <div className='flex items-center gap-3'>
-                            <i class="fa-solid fa-flag text-gray-500 text-xl"></i>
+                            <i className="fa-solid fa-flag text-gray-500 text-xl"></i>
                             <h3 className='text-base'>{country}</h3>
                         </div>
                         <div className='bg-gray-200 px-4 py-2'>
@@ -37,7 +38,7 @@ const Players = (product) => {
                     </div>
                     <div className='flex justify-between items-center'>
                         <h3 className='text-lg font-semibold'>Price: $ {biddingPrice}</h3>
-                        <button className='btn btn-actions'>Choose Player</button>
+                        <button onClick={() => handleSelectedPlayer(product)} className='btn btn-actions'>Choose Player</button>
                     </div>
 
                 </div>

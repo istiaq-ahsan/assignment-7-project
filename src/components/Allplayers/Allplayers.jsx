@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import Players from "./Players";
+import AllPlayer from "./AllPlayer";
+import Selected from "./Selected";
 
 
 
-const Allplayers = ({ handleIsActive, isActive }) => {
+const Allplayers = ({ handleIsActive, isActive, handleSelectedPlayer, selectedPlayer, handleDelete }) => {
+
 
     const [products, setProducts] = useState([]);
     useEffect(() => {
@@ -18,14 +20,20 @@ const Allplayers = ({ handleIsActive, isActive }) => {
                 <h2 className='text-2xl font-bold'>Available Players</h2>
                 <div>
                     <button onClick={() => handleIsActive("cart")} className={`${isActive.cart ? "btn btn-active bg-yellow-400" : "btn"}`}>Available</button>
-                    <button onClick={() => handleIsActive("about")} className={`${isActive.cart ? "btn" : "btn btn-active bg-yellow-400"}`}>Selected <span>0</span></button>
+                    <button onClick={() => handleIsActive("about")} className={`${isActive.cart ? "btn" : "btn btn-active bg-yellow-400"}`}>Selected <span>{selectedPlayer.length}</span></button>
                 </div>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 mx-auto gap-5 my-16 items-center justify-center ">
-                {
-                    products.map(product => <Players key={product.playerId} product={product}></Players>)
-                }
-            </div>
+
+            {
+                isActive.cart ?
+                    <AllPlayer
+                        products={products}
+                        handleSelectedPlayer={handleSelectedPlayer}>
+
+                    </AllPlayer> :
+                    <Selected handleDelete={handleDelete} selectedPlayer={selectedPlayer}>
+                    </Selected>
+            }
 
         </div>
 
